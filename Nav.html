@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatiable" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="navcss.css">
+</head>
+<body>
+	<nav>
+		<a href="#">Home</a>
+		<a href="#">About</a>
+		<a href="Borderbutton.html">Projects</a>
+		<a href="#">Achievements</a>
+		<a href="#">Research Works</a>
+		<a href="#">Contact</a>
+		<div id="marker"></div>
+	</nav>
+	<script>
+	  let marker=document.querySelector('#marker');
+          let item=document.querySelectorAll('nav a');
+
+	  function indicator(e){
+	  marker.style.left=e.offsetLeft+'px';
+	  marker.style.width=e.offsetWidth+'px';
+	  }
+
+	  item.forEach(link => {
+		link.addEventListener('click', (e) => {
+		indicator(e.target);
+	  })
+	 })
+        </script>
+
+</body>
+</html>

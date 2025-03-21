@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Achievements</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      min-height: 100vh;
+      background: #010615;
+    }
+
+    /* Hide default scrollbar */
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+
+    /* Custom scrollbar */
+    #progressbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 8px;
+      height: 0;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #fff;
+      animation: neonPulse 1.5s ease-in-out infinite alternate;
+      z-index: 1000;
+    }
+
+    @keyframes neonPulse {
+      from {
+        box-shadow: 
+          0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 15px #fff,
+          0 0 20px #fff;
+      }
+      to {
+        box-shadow: 
+          0 0 2px #fff,
+          0 0 5px #fff,
+          0 0 7px #fff,
+          0 0 10px #fff;
+      }
+    }
+
+    .box {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 40px;
+      transition: 0.5s;
+      background: #060c21;
+    }
+
+    .box .imgBx {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .box .imgBx img {
+      max-width: 100%;
+      opacity: 0.1;
+      transition: 0.5s;
+    }
+
+    .box:hover {
+      height: 325px;
+    }
+
+    .box:hover .imgBx img {
+      opacity: 1;
+    }
+
+    .zoom-icon-wrapper {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 35px;
+      height: 35px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 2;
+      opacity: 0;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .box:hover .zoom-icon-wrapper {
+      opacity: 1;
+    }
+
+    .zoom-icon {
+      color: white;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .zoom-icon-wrapper:hover {
+      background: rgba(0, 0, 0, 0.9);
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .zoom-icon-wrapper:hover .zoom-icon {
+      transform: scale(1.1);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .close-btn i {
+      font-size: 14px;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(90deg);
+    }
+
+    .box:before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: #fff;
+      z-index: -1;
+    }
+
+    .box:after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: #fff;
+      z-index: -2;
+      filter: blur(40px);
+    }
+
+    .box:before, .box:after {
+      background: linear-gradient(235deg, #ff69b4, #010615, #db7093);
+    }
+
+    .box:nth-child(2):before, .box:nth-child(2):after { background: linear-gradient(235deg, #89ff00, #010615, #00bcd4); }
+    .box:nth-child(3):before, .box:nth-child(3):after { background: linear-gradient(235deg, #ff005e, #010615, #fbff00); }
+    .box:nth-child(4):before, .box:nth-child(4):after { background: linear-gradient(235deg, #772aff, #010615, #2196f3); }
+    .box:nth-child(5):before, .box:nth-child(5):after { background: linear-gradient(235deg, #ff7f00, #010615, #ffc400); }
+    .box:nth-child(6):before, .box:nth-child(6):after { background: linear-gradient(235deg, #00ffff, #010615, #008080); }
+    .box:nth-child(7):before, .box:nth-child(7):after { background: linear-gradient(235deg, #ff1493, #010615, #ff69b4); }
+    .box:nth-child(8):before, .box:nth-child(8):after { background: linear-gradient(235deg, #9400d3, #010615, #8a2be2); }
+    .box:nth-child(9):before, .box:nth-child(9):after { background: linear-gradient(235deg, #00fa9a, #010615, #32cd32); }
+    .box:nth-child(10):before, .box:nth-child(10):after { background: linear-gradient(235deg, #ff4500, #010615, #ff6347); }
+    .box:nth-child(11):before, .box:nth-child(11):after { background: linear-gradient(235deg, #1e90ff, #010615, #00bfff); }
+    .box:nth-child(12):before, .box:nth-child(12):after { background: linear-gradient(235deg, #ffd700, #010615, #ffa500); }
+    .box:nth-child(13):before, .box:nth-child(13):after { background: linear-gradient(235deg, #add8e6, #010615, #4682b4); }
+    .box:nth-child(14):before, .box:nth-child(14):after { background: linear-gradient(235deg, #7fffd4, #010615, #40e0d0); }
+    .box:nth-child(15):before, .box:nth-child(15):after { background: linear-gradient(235deg, #8b0000, #010615, #ff0000); }
+
+    .box .content {
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      height: 90px;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .box:hover .content {
+      opacity: 1;
+    }
+
+    .box .content h2 {
+      font-size: 20px;
+      color: #fff;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 1px;
+    }
+
+    .box .content h2 span {
+      font-size: 14px;
+      color: #fff;
+      font-weight: 200;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<!-- Progress bar -->
+  <div id="progressbar"></div>
+
+  <!-- Modal -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <span class="close-btn"><i class="fas fa-times"></i></span>
+      <img id="modalImage" src="" alt="Zoomed image">
+    </div>
+  </div>
+  <!-- First box with zoom -->
+  <div class="box">
+    <div class="imgBx">
+      <img src="_img202252716515.png">
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+      <h2>Best Paper Award<br><span>@NIT TRICHY</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="_certexc_P.SANTHOSH KUMAR-1.png">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>Degree in a Day<br><span>@NIT PONDICHERRY</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="IMG_20230201_143541.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>Clueminati<br><span>@Jamal mohamed Clg TRICHY</span></h2>
+    </div>
+  </div>
+
+
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="IMG-20240216-WA0066.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>HACKATHON<br><span>@SRM University CHENNAI</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="IMG-20240223-WA0003.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>Game Development<br><span>@Yadava Clg MADURAI</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="IMG-20240223-WA0005.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>Debugging<br><span>@Gandhigram University DINDUGUL</span></h2>
+    </div>
+  </div>
+
+
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="IMG-20240223-WA0006.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>DEBUGGING<br><span>@Saraswathi Narayanan clg MADURAI</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="IMG-20240223-WA0008.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>Best Salesman<br><span>@National Engineering Clg KOVILPATTY</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="IMG-20240223-WA0009.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>Web Designing<br><span>@Saraswathi Narayanan clg MADURAI</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="Best Poster.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>Best Poster<br><span>@CAPS CHRIST University Bangalore</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="Best Poster Presentation.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>Best Poster Presentation<br><span>@CAPS CHRIST University Bangalore</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="Poster Overall.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>Overall Poster Presentation<br><span>@CAPS CHRIST University Bangalore</span></h2>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="imgBx">
+       <img src="NIT PY HACKATHON.jpg">
+
+      <div class="zoom-icon-wrapper">
+        <i class="fas fa-search-plus zoom-icon"></i>
+      </div>
+    </div>
+    <div class="content">
+       <h2>HACKATHON<br><span>@NIT PONDICHERRY</span></h2>
+    </div>
+  </div>
+<script>
+    // Modal functionality
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.close-btn');
+    const zoomWrappers = document.querySelectorAll('.zoom-icon-wrapper');
+
+    zoomWrappers.forEach(wrapper => {
+      wrapper.addEventListener('click', function(e) {
+        const imgSrc = this.previousElementSibling.src;
+        modal.style.display = 'flex';
+        setTimeout(() => {
+          modal.classList.add('active');
+        }, 10);
+        modalImg.src = imgSrc;
+      });
+    });
+
+    closeBtn.addEventListener('click', function() {
+      modal.classList.remove('active');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+    });
+
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+        }, 300);
+      }
+    });
+
+    // Scrollbar progress
+    $(window).scroll(function(){
+      let scroll = $(window).scrollTop(),
+          dh = $(document).height(),
+          wh = $(window).height();
+      let scrollPercent = (scroll / (dh - wh)) * 100;
+      $('#progressbar').css('height', scrollPercent + '%');
+    });
+  </script>
+</body>
+</html>

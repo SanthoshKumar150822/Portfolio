@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+*
+{
+ margin: 0px;
+ padding: 0px;
+ box-sizing: border-box;
+ font-family: 'Lato', sans-serif;
+}
+body
+{
+ min-height: 100vh;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-wrap: wrap;
+  background: #010615; //background:#000;
+}
+.card
+{
+ position: relative;
+ margin: 30px;
+ height: 400px;
+ width: 300px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background: #010615;
+}
+.card h1
+{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ font-size: 10em;
+ color:  #fff;
+ align-items:center;
+}
+.card:hover h1
+{
+ opacity: 0;
+}
+.card .left
+{
+ position: absolute;
+ top: 0px;
+ left: 0px;
+ width: 50%;
+ height: 100%;
+ display: block;
+ background: rgba(255,255,255,0.102);
+ pointer-events: none;
+ transition: 0.5s ease-in-out;
+}
+.card .right
+{
+ position: absolute;
+ top: 0px;
+ right: 0px;
+ width: 50%;
+ height: 100%;
+ display: block;
+ background: #060c21;
+ pointer-events: none;
+ transition: 0.5s ease-in-out;
+}
+.card:hover .left, .card:hover .right
+{
+ width:0%;
+}
+.card .content 
+{
+ padding: 20px;
+ display:flex;
+ justify-content: space-between;
+ text-align:justify;
+ flex-direction:column;
+ color:#fff;
+ opacity:0;
+ transition-delay:0.2s;
+}
+.card:hover .content
+{
+ opacity:1;
+}
+.card::before
+{
+ position: absolute;
+ content: '';
+ top: -2px;
+ left: -2px;
+ right: -2px;
+ bottom: -2px;
+ z-index: -1;
+}
+.card::after
+{
+ position: absolute;
+ content: '';
+ top: -2px;
+ left: -2px;
+ right: -2px;
+ bottom: -2px;
+ z-index: -2;
+ filter:blur(20px);
+ opacity:0;
+}
+.card:nth-child(1)::after, .card:nth-child(1)::before
+{
+ background: linear-gradient(235deg, #ffbc00, #ff0058);
+ transition:opacity 200ms;
+}
+.card:nth-child(2)::after, .card:nth-child(2)::before
+{
+ background: linear-gradient(235deg, #03a9f4, #ff0058);
+ transition:opacity 200ms;
+}
+.card:nth-child(3)::after, .card:nth-child(3)::before
+{
+ background: linear-gradient(235deg, #4dff03, #00d0ff);
+ transition:opacity 200ms;
+}
+.card:hover::after
+{
+ opacity:1;
+}
+.card:h1::after
+{
+ transition:opacity 200ms;
+}

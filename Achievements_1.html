@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #222;
+      transform-style: preserve-3d;
+    }
+
+    .box {
+      position: relative;
+      display: flex;
+      transform-style: preserve-3d;
+      perspective: 500px;
+    }
+
+    .box .item {
+      position: absolute;
+      top: calc(50% - 150px);
+      left: calc(50% - 125px);
+      width: 250px;
+      height: 400px;
+      background: #fff;
+      transition: transform 0.5s ease-out, opacity 0.3s ease-out;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+      transform-style: preserve-3d;
+      transform-origin: bottom;
+      user-select: none;
+      -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0002);
+      will-change: transform, opacity;
+    }
+
+    .box .item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .box .item:nth-child(1) {
+      transform: translate3d(-250px, 0, 0) scale(0.8) rotateY(25deg);
+      z-index: 1;
+    }
+
+    .box .item:nth-child(2) {
+      transform: translate3d(-250px, 0, 0) scale(0.8) rotateY(25deg);
+      z-index: 2;
+    }
+
+    .box .item:nth-child(3) {
+      transform: translate3d(-150px, 0, 0) scale(0.9) rotateY(15deg);
+      z-index: 3;
+    }
+
+    .box .item:nth-child(4) {
+      transform: translate3d(0px, 0, 0) scale(1) rotateY(0deg);
+      z-index: 4;
+    }
+
+    .box .item:nth-child(5) {
+      transform: translate3d(150px, 0, 0) scale(0.9) rotateY(-15deg);
+      z-index: 3;
+    }
+
+    .box .item:nth-child(6) {
+      transform: translate3d(250px, 0, 0) scale(0.8) rotateY(-25deg);
+      z-index: 2;
+    }
+
+    .box .item:nth-child(7) {
+      transform: translate3d(250px, 0, 0) scale(0.8) rotateY(-25deg);
+      z-index: 1;
+    }
+
+    .buttons {
+      margin-top: 250px;
+      position: absolute;
+      bottom: 15px;
+      display: flex;
+      gap: 20px;
+      margin-left: 0px;
+    }
+
+    .buttons span {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+
+    .buttons span:hover {
+      opacity: 1;
+    }
+
+    .buttons span::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #fff;
+      border-left: 2px solid #fff;
+      transform: rotate(-45deg);
+    }
+
+    .buttons span:last-child::before {
+      content: '';
+      position: absolute;
+      right: 20px;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #fff;
+      border-left: 2px solid #fff;
+      transform: rotate(135deg);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <div class="item"><img src="images/IMG-20230314-WA0008.jpg" alt="Image 1"></div>
+    <div class="item"><img src="images/Collage_20241231_092944.jpg" alt="Image 2"></div>
+    <div class="item"><img src="images/Dofoto_20250115_1440356726bb601d671888d85a583fef004061367.jpg" alt="Image 3"></div>
+    <div class="item"><img src="images/msdsk114.png" alt="Image 4"></div>
+    <div class="item"><img src="images/IMG-20230814-WA0026.jpg" alt="Image 5"></div>
+    <div class="item"><img src="images/Dofoto_20250115_143723130e0843fc4f382e46775a6960a88f76b06.jpg" alt="Image 6"></div>
+    <div class="item"><img src="images/Dofoto_20250115_14313308762bcc2f93f79031ef2dd0aa588602cd4.png" alt="Image 7"></div>
+    <div class="item"><img src="images/20240313_34945PMByGPSMapCamera.jpg" alt="Image 8"></div>
+    <div class="item"><img src="images/IMG_20240218_101854.jpg" alt="Image 9"></div>
+    <div class="item"><img src="images/IMG-20221105-WA0007.jpg" alt="Image 10"></div>
+    <div class="item"><img src="images/Dofoto_20250115_142249066b04f54d2e0a0bad35626747222e0f8df.jpg" alt="Image 11"></div>
+    <div class="item"><img src="images/Dofoto_20250115_142903863215c682a81799a6cc3d0686a015ba021.jpg" alt="Image 12"></div>
+    <div class="item"><img src="images/Dofoto_20250115_14251004391971e39adb2af6c1518abacd6c6452d.jpg" alt="Image 13"></div>
+    <div class="item"><img src="images/Love1.png" alt="Image 14"></div>
+    <div class="item"><img src="images/aifaceswap-e1576ff154b1c3adae6328d290c26f77.jpg" alt="Image 15"></div>
+    <div class="item"><img src="images/IMG_20240201_231921.png" alt="Image 16"></div>
+    <div class="item"><img src="images/Dofoto_20250115_1507529992a08f6bc567e4dcf04776ce337963ef8.jpg" alt="Image 17"></div>
+    <div class="item"><img src="images/IMG-20231221-WA0022.jpg" alt="Image 18"></div>
+    <div class="item"><img src="images/Dofoto_20250115_145047122b882ca75948eea30dde39d226e805696.jpg" alt="Image 19"></div>
+    <div class="item"><img src="images/IMG-20240302-WA0030.jpg" alt="Image 20"></div>
+    <div class="item"><img src="images/Dofoto_20250115_150314564de1d2aaa06ad521ffcfc67bc4abd39a5.jpg" alt="Image 21"></div>
+    <div class="item"><img src="images/Dofoto_20250115_14362685962bc4c5ab79de39da68515dbfce8e3cf.jpg" alt="Image 22"></div>
+    <div class="item"><img src="images/20220827_143449.jpg" alt="Image 23"></div>
+    <div class="item"><img src="images/Dofoto_20250115_1428151330385cfe81d96e83b8b1ab89f60127edc.png" alt="Image 24"></div>
+    <div class="item"><img src="images/Dofoto_20250115_14555607837b318a986f53a835249a8a617f65b76.jpg" alt="Image 25"></div>
+  </div>
+
+  <div class="buttons">
+    <span class="prev"></span>
+    <span class="next"></span>
+  </div>
+
+  <script>
+    let prev = document.querySelector('.prev');
+    let next = document.querySelector('.next');
+    let box = document.querySelector('.box');
+    let isAnimating = false;
+    
+    function moveNext() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      let items = document.querySelectorAll('.item');
+      let firstItem = items[0];
+      
+      // Fade out the first item
+      firstItem.style.opacity = '0';
+      
+      setTimeout(() => {
+        // Move the item to the end
+        box.appendChild(firstItem);
+        
+        // Force a reflow
+        void firstItem.offsetWidth;
+        
+        // Reset opacity
+        firstItem.style.opacity = '1';
+        
+        // Update z-indices for visible items
+        items = document.querySelectorAll('.item');
+        items.forEach((item, index) => {
+          if (index < 7) {
+            item.style.visibility = 'visible';
+            item.style.opacity = '1';
+          } else {
+            item.style.visibility = 'hidden';
+            item.style.opacity = '0';
+          }
+        });
+        
+        setTimeout(() => {
+          isAnimating = false;
+        }, 50);
+      }, 300); // Wait for fade out
+    }
+
+    function movePrev() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      let items = document.querySelectorAll('.item');
+      let lastItem = items[items.length - 1];
+      
+      // Initially hide the last item
+      lastItem.style.opacity = '0';
+      
+      // Move it to the front
+      box.prepend(lastItem);
+      
+      // Force a reflow
+      void lastItem.offsetWidth;
+      
+      // Fade it in
+      requestAnimationFrame(() => {
+        lastItem.style.opacity = '1';
+        
+        // Update visibility for all items
+        items = document.querySelectorAll('.item');
+        items.forEach((item, index) => {
+          if (index < 7) {
+            item.style.visibility = 'visible';
+            item.style.opacity = '1';
+          } else {
+            item.style.visibility = 'hidden';
+            item.style.opacity = '0';
+          }
+        });
+      });
+      
+      setTimeout(() => {
+        isAnimating = false;
+      }, 500);
+    }
+
+    next.addEventListener('click', moveNext);
+    prev.addEventListener('click', movePrev);
+
+    // Initialize visibility
+    let items = document.querySelectorAll('.item');
+    items.forEach((item, index) => {
+      if (index >= 7) {
+        item.style.visibility = 'hidden';
+        item.style.opacity = '0';
+      }
+    });
+  </script>
+
+</body>
+</html>

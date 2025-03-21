@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Your original CSS */
+        @import url('https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 20vh;
+            background: #0f1219;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        nav {
+            position: relative;
+            display: flex;
+            background: #1e232f;
+            padding: 10px 0;
+            margin-top: 40px; /* Adds 40px space above the navigation bar */
+        }
+
+        nav a {
+            position: relative;
+            text-decoration: none;
+            padding: 15px 25px;
+            color: #fff;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease; /* Smooth transition for color */
+        }
+
+        nav a:hover {
+            color: #08f9ff; /* Change text color to #08f9ff on hover */
+        }
+
+        #marker {
+            position: absolute;
+            bottom: 0px;
+            height: 100%;
+            width: 90px;
+            border-bottom: 5px solid #08f9ff;
+            background: linear-gradient(0deg, #08f9ff33, transparent);
+            transition: 0.5s;
+            pointer-events: none;
+            filter: drop-shadow(0 5px 25px #08f9ff);
+        }
+
+        /* Hide all sections by default */
+        section {
+            display: none;
+            padding: 100px;
+            margin: 50px 0;
+        }
+
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Styling individual sections (for testing) */
+        #home {
+            background-color: #1e232f;
+            text-align: center;
+            width: 62%;
+            margin-left: 260px;
+            margin-right: 260px;
+            height: 800px;
+        }
+
+        #projects {
+            background-color: #1e232f;
+            width: 62%;
+            margin-left: 260px;
+            margin-right: 260px;
+            text-align: center;
+            height: 600px;
+        } 
+
+        #achievements {
+            background-color: #1e232f;
+            width: 62%;
+            margin-left: 260px;
+            margin-right: 260px;
+            text-align: center;
+            height: 600px;
+        }
+
+        #research {
+            background-color: #1e232f;
+            width: 62%;
+            margin-left: 260px;
+            margin-right: 260px;
+            text-align: center;
+            height: 2000px;
+        }
+
+        #contact {
+            background-color: #1e232f;
+            width: 62%;
+            margin-left: 260px;
+            margin-right: 260px;
+            text-align: center;
+            height: 600px;
+            align-items: center;
+        }
+
+        /* New CSS for section content */
+        section {
+            padding: 100px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 3.5em;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 2.5em;
+        }
+
+        p {
+            color: #fff;
+            font-size: 1.6em;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
+        #progressbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 100%;
+            border-radius: 10px;
+            background-color: #08f9ff; /* Set the progress bar color to #08f9ff */
+            box-shadow: 0 0 10px 5px rgba(8, 249, 255, 0.8); /* Glowing effect */
+        }
+
+        /* Style for the photo in the about section */
+        #profile-photo {
+            width: 220px; /* Medium size */
+            height: 220px; /* Medium size */
+            border-radius: 50%; /* Round shape */
+            border: 5px solid #08f9ff;
+            box-shadow: 0 0 40px rgba(8, 249, 255, 0.8);
+            object-fit: cover;
+            margin-top: 40px;
+            transition: transform 0.3s ease;
+            margin-left: 210px; /* Centers horizontally */
+            margin-right: 0px; /* Centers horizontally */
+        }
+
+        #profile-photo:hover {
+            transform: scale(1.1); /* Zoom effect when hovered */
+        }
+
+        /* Custom CSS for the About section */
+        #about {
+            padding: 100px; /* Same padding as Home section */
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1e232f;
+            margin-top: 50px;
+            margin-left: 260px;
+            margin-right: 260px;
+            flex-direction: column;
+            height: 2800px;
+        }
+
+        #about h2 {
+            position: relative;
+            font-size: 3em;
+            letter-spacing: 8px;
+            color: #0e3742;
+            text-transform: uppercase;
+            width: 100%;
+            text-align: center;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+            line-height: 0.70em;
+            outline: none;
+            animation: animate 5s linear infinite;
+            margin-top: 30px; /* 30px below the profile photo */
+        }
+
+        @keyframes animate {
+            0%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92% {
+                color: #0e3742;
+                text-shadow: none;
+            }
+            18.1%, 20.1%, 30%, 50%, 60.1%, 65%, 80.1%, 90%, 92.1%, 100% {
+                color: #fff;
+                text-shadow: 0 0 10px #03bcf4,
+                             0 0 20px #03bcf4,
+                             0 0 40px #03bcf4,
+                             0 0 80px #03bcf4,
+                             0 0 160px #03bcf4;
+            }
+        }
+
+        #about p {
+            margin-top: 40px; /* Add space of 3 lines below the h2 */
+            color: #fff;
+            font-size: 1.6em;
+            text-align: justify; /* Centers the text horizontally */
+            line-height: 1.8; /* Controls the spacing between lines of text */
+            display: flex;
+            gap:20px;
+            justify-content: center; /* Aligns the paragraph content in the center */
+            align-items: center; /* Aligns the content vertically in the center */
+            word-wrap: break-word; /* Ensures words wrap to the next line if necessary */
+        }
+
+        #contact {
+            background-color: #1e232f;
+            padding: 60px 0;
+            margin-top: 50px;
+        }
+
+        #contact h2 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Space between the icons */
+            flex-wrap: wrap; /* Ensures icons wrap on smaller screens */
+            margin-top: 20px; /* Optional space above icons */
+        }
+
+        .social-icon {
+            display: block;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+        }
+
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+
+        .social-icon:hover img {
+            opacity: 1; /* Slightly fade the icons on hover */
+        }
+
+        #home .home-content {
+            display: flex;
+            justify-content: space-between; /* Distribute space evenly between text and photo */
+            align-items: center; /* Vertically align text and photo */
+            width: 100%; /* Full width of the section */
+        }
+
+        #home .text {
+            flex: 1; /* Text takes up remaining space */
+            text-align: left; /* Align text to the left */
+        }
+
+        #home .photo {
+            flex: 0; /* Photo takes its natural width */
+            margin-left: 20px; /* Optional space between text and photo */
+        }
+
+        /* Text color and basic styling */
+        .resume-link {
+            text-decoration: none; /* Remove default underline */
+            color: White; /* Initial color */
+            font-size: 22px;
+            font-weight: bold;
+            transition: text-shadow 0.3s ease; /* Transition for the shadow effect */
+        }
+
+        /* Hover effect for the link */
+        .resume-link:hover {
+            color: #08f9ff; /* Change the text color */
+            text-shadow: 0px 0px 20px rgba(8, 249, 255, 0.8); /* Glow effect */
+        }
+
+        .glowing-button {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #08f9ff;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .glowing-button:hover {
+            background-color: #08f9ff;
+            color: #000;
+            box-shadow: 0 0 10px #08f9ff, 0 0 20px #08f9ff, 0 0 40px #08f9ff;
+        }
+
+        /* Style for the video in the home section */
+        video {
+            height: 300px;
+            width: 600px;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        /* Hide video controls */
+        video::-webkit-media-controls {
+            display: none !important;
+        }
+        video::-webkit-media-controls-enclosure {
+            display: none !important;
+        }
+        video::-webkit-media-controls-panel {
+            display: none !important;
+        }
+        video::-webkit-media-controls-play-button,
+        video::-webkit-media-controls-start-playback-button {
+            display: none !important;
+        }
+
+        /* Container for the video and unmute icon */
+        .video-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Video styling */
+        video {
+            height: 300px;
+            width: 600px;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        /* Unmute icon styling */
+        .unmute-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .unmute-icon:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="progressbar"></div>
+    <!-- Navigation bar -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#research">Research Works</a>
+        <a href="#contact">Contact</a>
+        <div id="marker"></div> <!-- The sliding marker -->
+    </nav>
+
+    <section id="home">
+        <h3><span style="font-size:30px;">Hi, myself</span> SANTHOSH KUMAR</h3>
+        <!-- Replace the image with a video -->
+            <div class="video-container">
+        <!-- Video with autoplay and muted -->
+        <video id="myVideo" src="videos/VN20250320_171510.mp4" autoplay muted loop playsinline controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture oncontextmenu="return false;"></video>
+        
+        <!-- Unmute icon -->
+        <div id="unmuteIcon" class="unmute-icon">🔇</div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('myVideo');
+    const unmuteIcon = document.getElementById('unmuteIcon');
+    const marker = document.querySelector('#marker');
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+
+    // Function to toggle mute/unmute
+    function toggleMute() {
+        if (video.muted) {
+            video.muted = false; // Unmute the video
+            unmuteIcon.textContent = '🔊'; // Change icon to unmuted
+        } else {
+            video.muted = true; // Mute the video
+            unmuteIcon.textContent = '🔇'; // Change icon to muted
+        }
+    }
+
+    // Add click event to the unmute icon
+    unmuteIcon.addEventListener('click', toggleMute);
+
+    // Function to hide all sections
+    function hideAllSections() {
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+    }
+
+    // Initially hide all sections and show the first section (home)
+    hideAllSections();
+    document.querySelector('#home').style.display = 'block';
+
+    // Play the video when the Home section is displayed
+    video.play();
+
+    // Function to set the marker position
+    function setMarkerPosition(link) {
+        marker.style.left = link.offsetLeft + 'px';
+        marker.style.width = link.offsetWidth + 'px';
+    }
+
+    // Set the marker to the first nav item on page load
+    setMarkerPosition(navLinks[0]);
+
+    // Move the marker when clicking on a nav item and show the respective section
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Prevent default link behavior
+            e.preventDefault();
+
+            // Hide all sections
+            hideAllSections();
+
+            // Show the target section
+            const targetSection = document.querySelector(link.getAttribute('href'));
+            targetSection.style.display = 'block';
+
+            // Move the marker to the clicked link
+            setMarkerPosition(e.target);
+
+            // Pause the video if navigating away from the Home section
+            if (link.getAttribute('href') !== '#home') {
+                video.pause();
+            } else {
+                // Play the video if returning to the Home section
+                video.play();
+            }
+        });
+    });
+});    </script> <br>
+        <p style="font-size:22px;">I'm an independent creative developer from Theni, India.</p>
+        <br>
+        <!-- The link with hover effect -->
+        <a href="https://drive.google.com/file/d/1g2MlkdwVXZ02S_mee7Bc8Idaw1VLPl_g/view" class="resume-link">View My Resume</a>
+        <a href="https://drive.google.com/file/d/1g2MlkdwVXZ02S_mee7Bc8Idaw1VLPl_g/view"><img src="images/Twee1.png" style="height:30px; width:60px;"></a>
+    </section>
+
+    <!-- Rest of your sections remain unchanged -->
+    <section id="about">
+        <img src="images/s.png" alt="Sandy" id="profile-photo"> <!-- Display the photo in round shape with golden glow -->
+        <pre>
+        </pre>  
+        <h2>SANTHOSH KUMAR</h2>
+        <p>
+            Hello, I'm a passionate and driven individual who 
+            has earned a Master's degree in Computer Applications at
+            CHRIST (Deemed to be University) Bangalore. My journey 
+            in the world of technology has led me to become proficient
+            in cutting-edge fields like IoT, AIML, AR/VR, 
+            Mobile Application Development, Software Development, 
+            Web Development and Game Development. I am a diehard fan 
+            of two iconic personalities who have deeply inspired my 
+            journey—Dr APJ Abdul Kalam, a visionary leader, and Lt. Col. MS Dhoni,
+            a true symbol of leadership and discipline. With a passion for creative coding,
+            critical thinking and problem-solving, I thrive on finding innovative,
+            efficient solutions to complex challenges. My ability to break down problems into simpler, actionable steps is one of my core strengths. As a team leader, I am driven by ethics, discipline, and a strong sense of responsibility. I lead by example, accepts the failure from the front and enjoys the success from the back. I don't celebrate success for myself; instead, I take pride in watching my teammates celebrate their achievements, knowing that our collective effort has brought us to that moment. Some of the key qualities that define me include punctuality, discipline, honesty, loyalty, patriotism, kindness, humility, generosity, and the ability to remain cool and calm under pressure. I firmly believe that learning is a continuous process, and it brings me immense joy to explore new technologies and ideas. Sharing this knowledge with others is something I hold dear, as I love to help my friends grow and develop along with me. I constantly nourish my mind by learning new things, keeping it sharp and ready to tackle any challenges that come my way. Above all, my greatest motivation comes from making my parents, loved ones, friends, professors, society, and country proud of what I achieve. I have a deep love for nature and believe in striking the perfect balance between environment and technology. This connection to nature keeps me grounded while I work towards creating a future where both can thrive. Thank you for visiting my portfolio. Let's connect and explore new opportunities to innovate, learn, and grow together 😊
+        </p>
+    </section>
+
+    <!-- Rest of your sections remain unchanged -->
+    <section id="projects">
+        <h2>My Projects</h2>
+        <br>
+        <button class="glowing-button" id="projects-btn">View My Projects</button>
+        <script>
+            document.getElementById('projects-btn').addEventListener('click', function() {
+                window.location.href = "Project1.html";
+            });
+        </script>
+    </section> 
+
+    <section id="achievements">
+        <h2>My Achievements</h2>
+        <br>
+        <button class="glowing-button" id="achievements-btn">CERTIFICATES</button>
+        <script>
+            document.getElementById('achievements-btn').addEventListener('click', function() {
+                window.location.href = "Achievements3.html";
+            });
+        </script>
+        <pre>     </pre>
+        <button class="glowing-button" id="achievements-btn1">SNAPS</button>
+        <script>
+            document.getElementById('achievements-btn1').addEventListener('click', function() {
+                window.location.href = "Achievements_1.html";
+            });
+        </script>
+    </section>
+
+    <section id="research">
+        <h2>Research Works</h2>
+        <p>Research Articles are under review in Reputed journals, will be published soon. To protect my intellectual properties, articles are temporarily unavailable to showcase.</p>
+    </section>
+
+    <section id="contact">
+        <pre>
+
+
+
+
+
+        </pre>
+        <h2>Contact Me</h2>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/santhosh-kumar-150822-p/" target="_blank" class="social-icon">
+                <img src="images/linkedin-icon.png" alt="LinkedIn" style="height:43px; width:43px">
+            </a><pre> </pre>
+            <a href="https://github.com/SanthoshKumar150822" target="_blank" class="social-icon">
+                <img src="images/git-icon1.png" alt="GitHub" style="height:45px; width:45px">
+            </a><pre> </pre>
+            <a href="https://www.instagram.com/santhoshkumar.exe" target="_blank" class="social-icon">
+                <img src="images/instagram-icon1.png" alt="Instagram" style="height:40px; width:40px">
+            </a><pre> </pre>
+            <a href="https://twitter.com/santhosh150822" target="_blank" class="social-icon">
+                <img src="images/twitter-icon2.png" alt="Twitter" style="height:35px; width:35px">
+            </a><pre> </pre>
+            <a href="mailto:santhoshkumar150822@gmail.com" class="social-icon">
+                <img src="images/mail-icon.png" alt="Mail" style="height:40px; width:40px">
+            </a><pre></pre>
+            <a href="https://www.google.com/maps/place/10%C2%B000'16.7%22N+77%C2%B035'52.1%22E" target="_blank" class="social-icon">
+                <img src="images/geo1.png" alt="Location" style="height:37px; width:37px">
+            </a>
+        </div>
+    </section>
+
+    <!-- Adding jQuery and scroll progress bar JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const marker = document.querySelector('#marker');
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section');
+
+            // Function to hide all sections
+            function hideAllSections() {
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+            }
+
+            // Initially hide all sections and show the first section (home)
+            hideAllSections();
+            document.querySelector('#home').style.display = 'block';
+
+            // Function to set the marker position
+            function setMarkerPosition(link) {
+                marker.style.left = link.offsetLeft + 'px';
+                marker.style.width = link.offsetWidth + 'px';
+            }
+
+            // Set the marker to the first nav item on page load
+            setMarkerPosition(navLinks[0]);
+
+            // Move the marker when clicking on a nav item and show the respective section
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Prevent default link behavior
+                    e.preventDefault();
+
+                    // Hide all sections
+                    hideAllSections();
+
+                    // Show the target section
+                    const targetSection = document.querySelector(link.getAttribute('href'));
+                    targetSection.style.display = 'block';
+
+                    // Move the marker to the clicked link
+                    setMarkerPosition(e.target);
+                });
+            });
+        });
+
+        // Scroll progress bar functionality
+        $(document).ready(function() {
+            $('#progressbar').css('height', '0%');  // Initially set progress bar height to 0%
+        });
+
+        $(window).scroll(function() {
+            var scroll = $(window).scrollTop(),
+                dh = $(document).height(),
+                wh = $(window).height();
+            var scrollPercent = (scroll / (dh - wh)) * 100;
+            $('#progressbar').css('height', scrollPercent + '%');
+        });
+    </script>
+</body>
+</html>

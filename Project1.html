@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: grid; /* Use CSS Grid */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+  gap: 20px; /* Adds space between the boxes */
+  justify-items: center; /* Centers boxes horizontally */
+  align-items: center; /* Centers boxes vertically */
+  min-height: 100vh;
+  background: #010615;
+}
+
+.box {
+  position: relative;
+  width: 250px; /* Width of each box */
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #060c21;
+  text-decoration: none; /* Remove underline from links */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.box:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #fff;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.box:after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #fff;
+  z-index: -2;
+  filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+.box:nth-child(1):before, .box:nth-child(1):after {
+  background: linear-gradient(235deg, #ff9800, #010615, #ff5722);
+}
+
+
+.box:nth-child(1):hover:before, .box:nth-child(1):hover:after {
+  background: linear-gradient(235deg, #ff5722, #010615, #ff9800);
+}
+
+
+.box:nth-child(1):active:before, .box:nth-child(1):active:after {
+  background: linear-gradient(235deg, #ff5722, #010615, #ff9800);
+}
+
+.box .glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.box .content {
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Media Query for smaller screens (max-width: 768px) */
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr; /* 1 column per row on smaller screens */
+  }
+
+  .box {
+    width: 100%; /* Make each box take the full width on smaller screens */
+    margin: 10px 0; /* Adjust the spacing for mobile */
+  }
+}
+  </style>
+</head>
+<body>
+
+  <a href="IoT.html" class="box" style="margin-left:550px;">
+    <div class="glass"></div>
+    <div class="content">
+      <p>Internet of Things</p>
+    </div>
+  </a>
+
+</body>
+</html>

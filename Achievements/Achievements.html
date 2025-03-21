@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #222;
+      transform-style: preserve-3d;
+    }
+
+    .box {
+      position: relative;
+      display: flex;
+      transform-style: preserve-3d;
+      perspective: 500px;
+    }
+
+    .box .item {
+      position: absolute;
+      top: calc(50% - 150px);
+      left: calc(50% - 125px);
+      width: 250px;
+      height: 400px;
+      background: #fff;
+      transition: 0.5s;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+      transform-style: preserve-3d;
+      transform-origin: bottom;
+      user-select: none;
+      -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0002);
+    }
+
+    .box .item:nth-child(1) {
+      transform: translate3d(-250px, 0, 0) scale(0.8) rotateY(25deg);
+      z-index: 1;
+    }
+
+    .box .item:nth-child(2) {
+      transform: translate3d(-250px, 0, 0) scale(0.8) rotateY(25deg);
+      z-index: 2;
+    }
+
+    .box .item:nth-child(3) {
+      transform: translate3d(-150px, 0, 0) scale(0.9) rotateY(15deg);
+      z-index: 3;
+    }
+
+    .box .item:nth-child(4) {
+      transform: translate3d(0px, 0, 0) scale(1) rotateY(0deg);
+      z-index: 4;
+    }
+
+    .box .item:nth-child(5) {
+      transform: translate3d(150px, 0, 0) scale(0.9) rotateY(-15deg);
+      z-index: 3;
+    }
+
+    .box .item:nth-child(6) {
+      transform: translate3d(250px, 0, 0) scale(0.8) rotateY(-25deg);
+      z-index: 2;
+    }
+
+    .box .item:nth-child(7) {
+      transform: translate3d(250px, 0, 0) scale(0.8) rotateY(-25deg);
+      z-index: -1;
+    }
+
+    .box .item img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+.buttons {
+  margin-top: 250px;
+  position: absolute;
+  bottom: 15px;
+  display: flex;
+  gap: 20px;
+margin-left:0px;
+}
+
+    .buttons span {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.5;
+    }
+
+    .buttons span:hover {
+      opacity: 1;
+    }
+
+    .buttons span::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #fff;
+      border-left: 2px solid #fff;
+      transform: rotate(-45deg);
+    }
+
+    .buttons span:last-child::before {
+      content: '';
+      position: absolute;
+      right: 20px;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #fff;
+      border-left: 2px solid #fff;
+      transform: rotate(135deg);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <div class="item"><img src="IMG-20230314-WA0008.jpg" alt="Image 1"></div>
+    <div class="item"><img src="Collage_20241231_092944.jpg" alt="Image 2"></div>
+    <div class="item"><img src="IMG_20240712_163733.jpg" alt="Image 3"></div>
+    <div class="item"><img src="msdsk114.png" alt="Image 4"></div>
+    <div class="item"><img src="IMG-20230814-WA0026.jpg" alt="Image 5"></div>
+    <div class="item"><img src="IMG-20230814-WA0032.jpg" alt="Image 6"></div>
+    <div class="item"><img src="IMG-20230814-WA0034.jpg" alt="Image 7"></div>
+  </div>
+
+  <div class="buttons">
+    <span class="prev"></span>
+    <span class="next"></span>
+  </div>
+
+  <script>
+    let prev = document.querySelector('.prev');
+    let next = document.querySelector('.next');
+
+    next.addEventListener('click', function() {
+      let items = document.querySelectorAll('.item');
+      document.querySelector('.box').appendChild(items[0]);
+    });
+
+    prev.addEventListener('click', function() {
+      let items = document.querySelectorAll('.item');
+      document.querySelector('.box').prepend(items[items.length - 1]);
+    });
+  </script>
+
+</body>
+</html> 

@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  margin-top:90px;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #010615; /* background:#000; */
+}
+
+.card {
+  position: relative;
+  margin: 35px; /* Increase margin to add additional space between cards */
+  height: 400px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #010615;
+  border-radius: 10px; /* Optional for rounded borders */
+}
+
+.card .content {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+  flex-direction: column;
+  color: #fff;
+  opacity: 1; /* Content is visible by default */
+  transition: opacity 0.2s; /* Optional transition */
+}
+
+/* Default border effects (visible without hover) */
+.card::before,
+.card::after {
+  position: absolute;
+  content: '';
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  border-radius: 10px; /* Optional for rounded borders */
+  background-size: 100% 100%;
+  transition: opacity 200ms, filter 200ms;
+}
+
+/* Gradient background borders (default without hover) */
+.card:nth-child(1)::before,
+.card:nth-child(1)::after {
+  background: linear-gradient(235deg, #ffbc00, #ff0058);
+}
+
+.card:nth-child(2)::before,
+.card:nth-child(2)::after {
+  background: linear-gradient(235deg, #03a9f4, #ff0058);
+}
+
+.card:nth-child(3)::before,
+.card:nth-child(3)::after {
+  background: linear-gradient(235deg, #4dff03, #00d0ff);
+}
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #00b0ff, #e1bee7); /* Turquoise to Pink */
+}
+
+.card:nth-child(5)::before,
+.card:nth-child(5)::after {
+  background: linear-gradient(235deg, #8bc34a, #f50057);
+}
+
+<!--
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #ff00c8, #00d4ff); /* Awesome pink to blue gradient */
+}
+
+
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #00b0ff, #e1bee7); /* Electric blue to soft lavender */
+}
+
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #008080, #ff6f61); /* Teal to coral */
+}
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #ff007f, #9c27b0); /* Bright pink to purple */
+}
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #5f3a87, #00e5ff); /* Dark purple to electric cyan */
+}
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #8bc34a, #f50057); /* Lime green to hot pink */
+}
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #fbc02d, #d32f2f); /* Golden yellow to red */
+}
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #00bcd4, #4caf50); /* Aqua blue to light green */
+}
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #8e2de2, #00bcd4); /* Electric violet to turquoise */
+}
+
+.card:nth-child(4)::before,
+.card:nth-child(4)::after {
+  background: linear-gradient(235deg, #5f3a87, #00e5ff); /* Cobalt blue to mint green */
+}-->
+
+/* Optional blur effect that applies by default */
+.card::after {
+  filter: blur(20px);
+  opacity: 1;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+button
+{
+ all: unset;
+ font-size:0.8em;
+ border-radius:7px;
+ height:25px;
+ width:75px;
+ font-weight:Bold;
+ background-color:#fff;
+ color:black;
+ text-align:center;
+}
