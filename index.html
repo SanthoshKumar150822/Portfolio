@@ -76,6 +76,29 @@ s<!DOCTYPE html>
             scroll-behavior: smooth;
         }
 
+                /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px; /* Width of the scrollbar */
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #1e232f; /* Color of the track */
+            border-radius: 10px;
+        }
+
+        /* Thumb */
+        ::-webkit-scrollbar-thumb {
+            background: #08f9ff; /* Color of the thumb */
+            border-radius: 10px;
+            border: 3px solid #1e232f; /* Border around the thumb */
+        }
+
+        /* Thumb on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06c6cc; /* Change color on hover */
+        }
+
         /* Styling individual sections (for testing) */
         #home {
             background-color: #1e232f;
