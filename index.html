@@ -1,4 +1,4 @@
-s<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -74,29 +74,6 @@ s<!DOCTYPE html>
         /* Smooth scroll for anchor links */
         html {
             scroll-behavior: smooth;
-        }
-
-                /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px; /* Width of the scrollbar */
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #1e232f; /* Color of the track */
-            border-radius: 10px;
-        }
-
-        /* Thumb */
-        ::-webkit-scrollbar-thumb {
-            background: #08f9ff; /* Color of the thumb */
-            border-radius: 10px;
-            border: 3px solid #1e232f; /* Border around the thumb */
-        }
-
-        /* Thumb on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #06c6cc; /* Change color on hover */
         }
 
         /* Styling individual sections (for testing) */
@@ -603,8 +580,9 @@ document.addEventListener('DOMContentLoaded', function () {
     </section>
 
     <!-- Adding jQuery and scroll progress bar JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--<script>
         document.addEventListener('DOMContentLoaded', function () {
             const marker = document.querySelector('#marker');
             const navLinks = document.querySelectorAll('nav a');
@@ -661,6 +639,19 @@ document.addEventListener('DOMContentLoaded', function () {
             var scrollPercent = (scroll / (dh - wh)) * 100;
             $('#progressbar').css('height', scrollPercent + '%');
         });
-    </script>
+    </script> -->
+    <script>
+    // Progress bar functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const progressBar = document.getElementById('progressbar');
+
+        window.addEventListener('scroll', function () {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            progressBar.style.height = scrollPercent + '%';
+        });
+    });
+</script>
 </body>
 </html>
