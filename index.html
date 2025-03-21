@@ -401,96 +401,70 @@
         <a href="#contact">Contact</a>
         <div id="marker"></div> <!-- The sliding marker -->
     </nav>
-
-    <section id="home">
-        <h3><span style="font-size:30px;">Hi, myself</span> SANTHOSH KUMAR</h3>
-        <!-- Replace the image with a video -->
-            <div class="video-container">
-        <!-- Video with autoplay and muted -->
-        <video id="myVideo" src="videos/intro.mp4" autoplay muted loop playsinline controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture oncontextmenu="return false;"></video>
+<section id="home">
+    <h3><span style="font-size:30px;">Hi, myself</span> SANTHOSH KUMAR</h3>
+    <!-- Replace the video with an iframe -->
+    <div class="video-container">
+        <!-- YouTube iframe -->
+        <iframe id="youtube-video" src="https://www.youtube.com/embed/ScEHXL5fpYQ?controls=0&mute=1&autoplay=1&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         
         <!-- Unmute icon -->
         <div id="unmuteIcon" class="unmute-icon">🔇</div>
     </div>
 
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const video = document.getElementById('myVideo');
-    const unmuteIcon = document.getElementById('unmuteIcon');
-    const marker = document.querySelector('#marker');
-    const navLinks = document.querySelectorAll('nav a');
-    const sections = document.querySelectorAll('section');
+        document.addEventListener('DOMContentLoaded', function () {
+            const unmuteIcon = document.getElementById('unmuteIcon');
 
-    // Function to toggle mute/unmute
-    function toggleMute() {
-        if (video.muted) {
-            video.muted = false; // Unmute the video
-            unmuteIcon.textContent = '🔊'; // Change icon to unmuted
-        } else {
-            video.muted = true; // Mute the video
-            unmuteIcon.textContent = '🔇'; // Change icon to muted
-        }
-    }
+            // Load the YouTube IFrame API
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    // Add click event to the unmute icon
-    unmuteIcon.addEventListener('click', toggleMute);
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('youtube-video', {
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+            }
 
-    // Function to hide all sections
-    function hideAllSections() {
-        sections.forEach(section => {
-            section.style.display = 'none';
-        });
-    }
+            function onPlayerReady(event) {
+                // Set initial mute state
+                event.target.mute();
+                updateMuteButton();
 
-    // Initially hide all sections and show the first section (home)
-    hideAllSections();
-    document.querySelector('#home').style.display = 'block';
+                // Add click event to the custom mute button
+                unmuteIcon.addEventListener('click', function () {
+                    if (player.isMuted()) {
+                        player.unMute();
+                    } else {
+                        player.mute();
+                    }
+                    updateMuteButton();
+                });
+            }
 
-    // Play the video when the Home section is displayed
-    video.play();
-
-    // Function to set the marker position
-    function setMarkerPosition(link) {
-        marker.style.left = link.offsetLeft + 'px';
-        marker.style.width = link.offsetWidth + 'px';
-    }
-
-    // Set the marker to the first nav item on page load
-    setMarkerPosition(navLinks[0]);
-
-    // Move the marker when clicking on a nav item and show the respective section
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Prevent default link behavior
-            e.preventDefault();
-
-            // Hide all sections
-            hideAllSections();
-
-            // Show the target section
-            const targetSection = document.querySelector(link.getAttribute('href'));
-            targetSection.style.display = 'block';
-
-            // Move the marker to the clicked link
-            setMarkerPosition(e.target);
-
-            // Pause the video if navigating away from the Home section
-            if (link.getAttribute('href') !== '#home') {
-                video.pause();
-            } else {
-                // Play the video if returning to the Home section
-                video.play();
+            // Update the mute button icon
+            function updateMuteButton() {
+                if (player.isMuted()) {
+                    unmuteIcon.textContent = '🔇'; // Muted icon
+                } else {
+                    unmuteIcon.textContent = '🔊'; // Unmuted icon
+                }
             }
         });
-    });
-});    </script> <br>
-        <p style="font-size:22px;">I'm an independent creative developer from Theni, India.</p>
-        <br>
-        <!-- The link with hover effect -->
-        <a href="https://drive.google.com/file/d/1g2MlkdwVXZ02S_mee7Bc8Idaw1VLPl_g/view" class="resume-link">View My Resume</a>
-        <a href="https://drive.google.com/file/d/1g2MlkdwVXZ02S_mee7Bc8Idaw1VLPl_g/view"><img src="images/twee1.png" style="height:30px; width:60px;"></a>
-    </section>
-
+    </script>
+    <br>
+    <p style="font-size:22px;">I'm an independent creative developer from Theni, India.</p>
+    <br>
+    <!-- The link with hover effect -->
+    <a href="https://drive.google.com/file/d/1g2MlkdwVXZ02S_mee7Bc8Idaw1VLPl_g/view" class="resume-link">View My Resume</a>
+    <a href="https://drive.google.com/file/d/1g2MlkdwVXZ02S_mee7Bc8Idaw1VLPl_g/view"><img src="images/twee1.png" style="height:30px; width:60px;"></a>
+</section>
+   
     <!-- Rest of your sections remain unchanged -->
     <section id="about">
 <img src="https://santhoshkumar150822.github.io/Portfolio/images/s.png" alt="Sandy" id="profile-photo">
