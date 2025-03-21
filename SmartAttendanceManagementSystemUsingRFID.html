@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartAttendanceManagementSystemUsingRFID</title>
+    <title>Embed YouTube Shorts</title>
     <style>
-       
+        /* Center the iframe */
         .video-container {
-            text-align: center; 
-            padding-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
         }
 
-        video {
-            width: 25%;
-	 
-            height: 50%; 
+        iframe {
+            width: 315px;  /* Width for vertical Shorts video */
+            height: 560px; /* Height for vertical Shorts video */
+            border: none;  /* Remove iframe border */
         }
     </style>
 </head>
 <body>
+
     <div class="video-container">
-        <video controls>
-            <source src="videos/VN20241125_133448.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Embedded YouTube Shorts Video -->
+        <iframe src="https://www.youtube.com/embed/WlgXlhC9IH8" title="YouTube Shorts Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+
 </body>
 </html>
-
-
-
-
