@@ -110,7 +110,7 @@
             margin-left: 260px;
             margin-right: 260px;
             text-align: center;
-            height: 2000px;
+            height: 600px;
         }
 
         #contact {
@@ -161,7 +161,7 @@
         }
 
         /* Style for the photo in the about section */
-        #profile-photo {
+          #profile-photo {
             width: 220px; /* Medium size */
             height: 220px; /* Medium size */
             border-radius: 50%; /* Round shape */
@@ -191,7 +191,7 @@
             margin-left: 260px;
             margin-right: 260px;
             flex-direction: column;
-            height: 2800px;
+            height: 2700px;
         }
 
         #about h2 {
@@ -386,6 +386,7 @@
         .unmute-icon:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
+
     </style>
 </head>
 <body>
@@ -404,30 +405,104 @@
     <section id="home">
         <h3><span style="font-size:30px;">Hi, myself</span> SANTHOSH KUMAR</h3>
         <!-- Replace the image with a video -->
-        <div class="video-container">
-            <video id="myVideo" src="videos/VN20250320_171510.mp4" autoplay muted loop playsinline controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture oncontextmenu="return false;"></video>
-            <!-- Unmute icon -->
-            <div id="unmuteIcon" class="unmute-icon">🔇</div>
-        </div>
-        <br>
+            <div class="video-container">
+        <!-- Video with autoplay and muted -->
+        <video id="myVideo" src="videos/intro.mp4" autoplay muted loop playsinline controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture oncontextmenu="return false;"></video>
+        
+        <!-- Unmute icon -->
+        <div id="unmuteIcon" class="unmute-icon">🔇</div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('myVideo');
+    const unmuteIcon = document.getElementById('unmuteIcon');
+    const marker = document.querySelector('#marker');
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+
+    // Function to toggle mute/unmute
+    function toggleMute() {
+        if (video.muted) {
+            video.muted = false; // Unmute the video
+            unmuteIcon.textContent = '🔊'; // Change icon to unmuted
+        } else {
+            video.muted = true; // Mute the video
+            unmuteIcon.textContent = '🔇'; // Change icon to muted
+        }
+    }
+
+    // Add click event to the unmute icon
+    unmuteIcon.addEventListener('click', toggleMute);
+
+    // Function to hide all sections
+    function hideAllSections() {
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+    }
+
+    // Initially hide all sections and show the first section (home)
+    hideAllSections();
+    document.querySelector('#home').style.display = 'block';
+
+    // Play the video when the Home section is displayed
+    video.play();
+
+    // Function to set the marker position
+    function setMarkerPosition(link) {
+        marker.style.left = link.offsetLeft + 'px';
+        marker.style.width = link.offsetWidth + 'px';
+    }
+
+    // Set the marker to the first nav item on page load
+    setMarkerPosition(navLinks[0]);
+
+    // Move the marker when clicking on a nav item and show the respective section
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Prevent default link behavior
+            e.preventDefault();
+
+            // Hide all sections
+            hideAllSections();
+
+            // Show the target section
+            const targetSection = document.querySelector(link.getAttribute('href'));
+            targetSection.style.display = 'block';
+
+            // Move the marker to the clicked link
+            setMarkerPosition(e.target);
+
+            // Pause the video if navigating away from the Home section
+            if (link.getAttribute('href') !== '#home') {
+                video.pause();
+            } else {
+                // Play the video if returning to the Home section
+                video.play();
+            }
+        });
+    });
+});    </script> <br>
         <p style="font-size:22px;">I'm an independent creative developer from Theni, India.</p>
         <br>
         <!-- The link with hover effect -->
         <a href="https://drive.google.com/file/d/1g2MlkdwVXZ02S_mee7Bc8Idaw1VLPl_g/view" class="resume-link">View My Resume</a>
-        <a href="https://drive.google.com/file/d/1g2MlkdwVXZ02S_mee7Bc8Idaw1VLPl_g/view"><img src="images/Twee1.png" style="height:30px; width:60px;"></a>
+        <a href="https://drive.google.com/file/d/1g2MlkdwVXZ02S_mee7Bc8Idaw1VLPl_g/view"><img src="images/twee1.png" style="height:30px; width:60px;"></a>
     </section>
 
     <!-- Rest of your sections remain unchanged -->
     <section id="about">
-        <img src="images/s.png" alt="Sandy" id="profile-photo"> <!-- Display the photo in round shape with golden glow -->
-        <pre></pre>  
+<img src="https://santhoshkumar150822.github.io/Portfolio/images/s.png" alt="Sandy" id="profile-photo">
+        <pre>
+        </pre>  
         <h2>SANTHOSH KUMAR</h2>
         <p>
             Hello, I'm a passionate and driven individual who 
             has earned a Master's degree in Computer Applications at
             CHRIST (Deemed to be University) Bangalore. My journey 
             in the world of technology has led me to become proficient
-            in cutting-edge fields like IoT, AIML, AR/VR, 
+            in cutting-edge fields like IoT, 
             Mobile Application Development, Software Development, 
             Web Development and Game Development. I am a diehard fan 
             of two iconic personalities who have deeply inspired my 
@@ -474,7 +549,13 @@
     </section>
 
     <section id="contact">
-        <pre></pre>
+        <pre>
+
+
+
+
+
+        </pre>
         <h2>Contact Me</h2>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/santhosh-kumar-150822-p/" target="_blank" class="social-icon">
@@ -487,40 +568,25 @@
                 <img src="images/instagram-icon1.png" alt="Instagram" style="height:40px; width:40px">
             </a><pre> </pre>
             <a href="https://twitter.com/santhosh150822" target="_blank" class="social-icon">
-                <img src="images/twitter-icon2.png" alt="Twitter" style="height:35px; width:35px">
+                <img src="images/Twitter-icon2.png" alt="Twitter" style="height:35px; width:35px">
             </a><pre> </pre>
             <a href="mailto:santhoshkumar150822@gmail.com" class="social-icon">
                 <img src="images/mail-icon.png" alt="Mail" style="height:40px; width:40px">
             </a><pre></pre>
             <a href="https://www.google.com/maps/place/10%C2%B000'16.7%22N+77%C2%B035'52.1%22E" target="_blank" class="social-icon">
-                <img src="images/geo1.png" alt="Location" style="height:37px; width:37px">
+                <img src="images/Geo1.png" alt="Location" style="height:37px; width:37px">
             </a>
         </div>
     </section>
 
     <!-- Adding jQuery and scroll progress bar JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--<script>
         document.addEventListener('DOMContentLoaded', function () {
-            const video = document.getElementById('myVideo');
-            const unmuteIcon = document.getElementById('unmuteIcon');
             const marker = document.querySelector('#marker');
             const navLinks = document.querySelectorAll('nav a');
             const sections = document.querySelectorAll('section');
-
-            // Function to toggle mute/unmute
-            function toggleMute() {
-                if (video.muted) {
-                    video.muted = false; // Unmute the video
-                    unmuteIcon.textContent = '🔊'; // Change icon to unmuted
-                } else {
-                    video.muted = true; // Mute the video
-                    unmuteIcon.textContent = '🔇'; // Change icon to muted
-                }
-            }
-
-            // Add click event to the unmute icon
-            unmuteIcon.addEventListener('click', toggleMute);
 
             // Function to hide all sections
             function hideAllSections() {
@@ -529,18 +595,9 @@
                 });
             }
 
-            // Function to show a specific section
-            function showSection(sectionId) {
-                hideAllSections(); // Hide all sections first
-                const targetSection = document.querySelector(sectionId);
-                if (targetSection) {
-                    targetSection.style.display = 'block'; // Show the target section
-                }
-            }
-
             // Initially hide all sections and show the first section (home)
             hideAllSections();
-            showSection('#home'); // Show the Home section by default
+            document.querySelector('#home').style.display = 'block';
 
             // Function to set the marker position
             function setMarkerPosition(link) {
@@ -557,22 +614,15 @@
                     // Prevent default link behavior
                     e.preventDefault();
 
-                    // Get the target section ID from the link's href attribute
-                    const targetSectionId = link.getAttribute('href');
+                    // Hide all sections
+                    hideAllSections();
 
                     // Show the target section
-                    showSection(targetSectionId);
+                    const targetSection = document.querySelector(link.getAttribute('href'));
+                    targetSection.style.display = 'block';
 
                     // Move the marker to the clicked link
-                    setMarkerPosition(link);
-
-                    // Pause the video if navigating away from the Home section
-                    if (targetSectionId !== '#home') {
-                        video.pause();
-                    } else {
-                        // Play the video if returning to the Home section
-                        video.play();
-                    }
+                    setMarkerPosition(e.target);
                 });
             });
         });
@@ -589,6 +639,19 @@
             var scrollPercent = (scroll / (dh - wh)) * 100;
             $('#progressbar').css('height', scrollPercent + '%');
         });
-    </script>
+    </script> -->
+    <script>
+    // Progress bar functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const progressBar = document.getElementById('progressbar');
+
+        window.addEventListener('scroll', function () {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            progressBar.style.height = scrollPercent + '%';
+        });
+    });
+</script>
 </body>
 </html>
