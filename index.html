@@ -154,14 +154,15 @@
             top: 0;
             right: 0;
             width: 10px;
-            height: 100%;
+            height: 0%; /* Initially set height to 0% */
             border-radius: 10px;
             background-color: #08f9ff; /* Set the progress bar color to #08f9ff */
             box-shadow: 0 0 10px 5px rgba(8, 249, 255, 0.8); /* Glowing effect */
+            transition: height 0.2s ease; /* Smooth transition for height */
         }
 
         /* Style for the photo in the about section */
-          #profile-photo {
+        #profile-photo {
             width: 220px; /* Medium size */
             height: 220px; /* Medium size */
             border-radius: 50%; /* Round shape */
@@ -332,61 +333,13 @@
             box-shadow: 0 0 10px #08f9ff, 0 0 20px #08f9ff, 0 0 40px #08f9ff;
         }
 
-        /* Style for the video in the home section */
-        video {
+        /* Style for the image in the home section */
+        #home img {
             height: 300px;
             width: 600px;
             border-radius: 15px;
             object-fit: cover;
         }
-
-        /* Hide video controls */
-        video::-webkit-media-controls {
-            display: none !important;
-        }
-        video::-webkit-media-controls-enclosure {
-            display: none !important;
-        }
-        video::-webkit-media-controls-panel {
-            display: none !important;
-        }
-        video::-webkit-media-controls-play-button,
-        video::-webkit-media-controls-start-playback-button {
-            display: none !important;
-        }
-
-        /* Container for the video and unmute icon */
-        .video-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Video styling */
-        video {
-            height: 300px;
-            width: 600px;
-            border-radius: 15px;
-            object-fit: cover;
-        }
-
-        /* Unmute icon styling */
-        .unmute-icon {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border-radius: 50%;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 15px;
-            transition: background-color 0.3s ease;
-        }
-
-        .unmute-icon:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
     </style>
 </head>
 <body>
@@ -404,86 +357,9 @@
 
     <section id="home">
         <h3><span style="font-size:30px;">Hi, myself</span> SANTHOSH KUMAR</h3>
-        <!-- Replace the image with a video -->
-            <div class="video-container">
-        <!-- Video with autoplay and muted -->
-        <video id="myVideo" src="videos/intro.mp4" autoplay muted loop playsinline controlsList="nodownload nofullscreen noremoteplayback" disablePictureInPicture oncontextmenu="return false;"></video>
-        
-        <!-- Unmute icon -->
-        <div id="unmuteIcon" class="unmute-icon">🔇</div>
-    </div>
-
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const video = document.getElementById('myVideo');
-    const unmuteIcon = document.getElementById('unmuteIcon');
-    const marker = document.querySelector('#marker');
-    const navLinks = document.querySelectorAll('nav a');
-    const sections = document.querySelectorAll('section');
-
-    // Function to toggle mute/unmute
-    function toggleMute() {
-        if (video.muted) {
-            video.muted = false; // Unmute the video
-            unmuteIcon.textContent = '🔊'; // Change icon to unmuted
-        } else {
-            video.muted = true; // Mute the video
-            unmuteIcon.textContent = '🔇'; // Change icon to muted
-        }
-    }
-
-    // Add click event to the unmute icon
-    unmuteIcon.addEventListener('click', toggleMute);
-
-    // Function to hide all sections
-    function hideAllSections() {
-        sections.forEach(section => {
-            section.style.display = 'none';
-        });
-    }
-
-    // Initially hide all sections and show the first section (home)
-    hideAllSections();
-    document.querySelector('#home').style.display = 'block';
-
-    // Play the video when the Home section is displayed
-    video.play();
-
-    // Function to set the marker position
-    function setMarkerPosition(link) {
-        marker.style.left = link.offsetLeft + 'px';
-        marker.style.width = link.offsetWidth + 'px';
-    }
-
-    // Set the marker to the first nav item on page load
-    setMarkerPosition(navLinks[0]);
-
-    // Move the marker when clicking on a nav item and show the respective section
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Prevent default link behavior
-            e.preventDefault();
-
-            // Hide all sections
-            hideAllSections();
-
-            // Show the target section
-            const targetSection = document.querySelector(link.getAttribute('href'));
-            targetSection.style.display = 'block';
-
-            // Move the marker to the clicked link
-            setMarkerPosition(e.target);
-
-            // Pause the video if navigating away from the Home section
-            if (link.getAttribute('href') !== '#home') {
-                video.pause();
-            } else {
-                // Play the video if returning to the Home section
-                video.play();
-            }
-        });
-    });
-});    </script> <br>
+        <!-- Replace the video with an image -->
+        <img src="images/kalamdhoni.png" alt="Kalam and Dhoni" style="height:300px; width:600px; border-radius:15px;">
+        <br>
         <p style="font-size:22px;">I'm an independent creative developer from Theni, India.</p>
         <br>
         <!-- The link with hover effect -->
@@ -493,9 +369,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- Rest of your sections remain unchanged -->
     <section id="about">
-<img src="https://santhoshkumar150822.github.io/Portfolio/images/s.png" alt="Sandy" id="profile-photo">
-        <pre>
-        </pre>  
+        <img src="https://santhoshkumar150822.github.io/Portfolio/images/s.png" alt="Sandy" id="profile-photo">
+        <pre></pre>  
         <h2>SANTHOSH KUMAR</h2>
         <p>
             Hello, I'm a passionate and driven individual who 
@@ -549,13 +424,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </section>
 
     <section id="contact">
-        <pre>
-
-
-
-
-
-        </pre>
+        <pre></pre>
         <h2>Contact Me</h2>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/santhosh-kumar-150822-p/" target="_blank" class="social-icon">
@@ -579,79 +448,18 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     </section>
 
-    <!-- Adding jQuery and scroll progress bar JavaScript -->
-    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!--<script>
+    <!-- Scroll progress bar functionality -->
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const marker = document.querySelector('#marker');
-            const navLinks = document.querySelectorAll('nav a');
-            const sections = document.querySelectorAll('section');
+            const progressBar = document.getElementById('progressbar');
 
-            // Function to hide all sections
-            function hideAllSections() {
-                sections.forEach(section => {
-                    section.style.display = 'none';
-                });
-            }
-
-            // Initially hide all sections and show the first section (home)
-            hideAllSections();
-            document.querySelector('#home').style.display = 'block';
-
-            // Function to set the marker position
-            function setMarkerPosition(link) {
-                marker.style.left = link.offsetLeft + 'px';
-                marker.style.width = link.offsetWidth + 'px';
-            }
-
-            // Set the marker to the first nav item on page load
-            setMarkerPosition(navLinks[0]);
-
-            // Move the marker when clicking on a nav item and show the respective section
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // Prevent default link behavior
-                    e.preventDefault();
-
-                    // Hide all sections
-                    hideAllSections();
-
-                    // Show the target section
-                    const targetSection = document.querySelector(link.getAttribute('href'));
-                    targetSection.style.display = 'block';
-
-                    // Move the marker to the clicked link
-                    setMarkerPosition(e.target);
-                });
+            window.addEventListener('scroll', function () {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollPercent = (scrollTop / scrollHeight) * 100;
+                progressBar.style.height = scrollPercent + '%';
             });
         });
-
-        // Scroll progress bar functionality
-        $(document).ready(function() {
-            $('#progressbar').css('height', '0%');  // Initially set progress bar height to 0%
-        });
-
-        $(window).scroll(function() {
-            var scroll = $(window).scrollTop(),
-                dh = $(document).height(),
-                wh = $(window).height();
-            var scrollPercent = (scroll / (dh - wh)) * 100;
-            $('#progressbar').css('height', scrollPercent + '%');
-        });
-    </script> -->
-    <script>
-    // Progress bar functionality
-    document.addEventListener('DOMContentLoaded', function () {
-        const progressBar = document.getElementById('progressbar');
-
-        window.addEventListener('scroll', function () {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercent = (scrollTop / scrollHeight) * 100;
-            progressBar.style.height = scrollPercent + '%';
-        });
-    });
-</script>
+    </script>
 </body>
 </html>
