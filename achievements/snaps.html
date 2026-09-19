@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snaps | Santhosh Kumar</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/images/icons/favicon.png" type="image/png">
+<style>
+  .carousel-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 40px 0 30px;
+  }
+
+  .box {
+    position: relative;
+    display: flex;
+    transform-style: preserve-3d;
+    perspective: 700px;
+    width: 250px;
+    height: 400px;
+  }
+
+  .box .item {
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 125px);
+    width: 250px;
+    height: 400px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    transition: transform 0.5s ease-out, opacity 0.3s ease-out;
+    transform-style: preserve-3d;
+    transform-origin: bottom;
+    user-select: none;
+    will-change: transform, opacity;
+  }
+
+  .box .item img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .box .item:nth-child(1) { transform: translate3d(-250px, 0, 0) scale(0.8) rotateY(25deg); z-index: 1; }
+  .box .item:nth-child(2) { transform: translate3d(-250px, 0, 0) scale(0.8) rotateY(25deg); z-index: 2; }
+  .box .item:nth-child(3) { transform: translate3d(-150px, 0, 0) scale(0.9) rotateY(15deg); z-index: 3; }
+  .box .item:nth-child(4) { transform: translate3d(0px, 0, 0) scale(1) rotateY(0deg); z-index: 4; }
+  .box .item:nth-child(5) { transform: translate3d(150px, 0, 0) scale(0.9) rotateY(-15deg); z-index: 3; }
+  .box .item:nth-child(6) { transform: translate3d(250px, 0, 0) scale(0.8) rotateY(-25deg); z-index: 2; }
+  .box .item:nth-child(7) { transform: translate3d(250px, 0, 0) scale(0.8) rotateY(-25deg); z-index: 1; }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding-bottom: 30px;
+  }
+
+  .buttons span {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .buttons span:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-soft);
+  }
+
+  .buttons span::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-top: 2px solid var(--text);
+    border-left: 2px solid var(--text);
+    transform: rotate(-45deg);
+    margin-left: 3px;
+  }
+
+  .buttons span:last-child::before {
+    transform: rotate(135deg);
+    margin-left: -3px;
+  }
+
+  .buttons span:hover::before { border-color: var(--accent); }
+
+  @media (max-width: 480px) {
+    .box, .box .item { width: 180px; height: 280px; }
+    .box .item { top: calc(50% - 140px); left: calc(50% - 90px); }
+    .box .item:nth-child(1), .box .item:nth-child(2) { transform: translate3d(-160px, 0, 0) scale(0.8) rotateY(25deg); }
+    .box .item:nth-child(3) { transform: translate3d(-100px, 0, 0) scale(0.9) rotateY(15deg); }
+    .box .item:nth-child(4) { transform: translate3d(0px, 0, 0) scale(1) rotateY(0deg); }
+    .box .item:nth-child(5) { transform: translate3d(100px, 0, 0) scale(0.9) rotateY(-15deg); }
+    .box .item:nth-child(6), .box .item:nth-child(7) { transform: translate3d(160px, 0, 0) scale(0.8) rotateY(-25deg); }
+  }
+</style>
+</head>
+<body>
+
+<a href="../index.html#achievements" class="glass btn btn-ghost back-btn">&#128123; Boo</a>
+
+<div class="page-shell">
+  <div class="carousel-wrap">
+    <div class="box" id="snapBox">
+      <div class="item"><img src="../assets/images/snaps/snap-01.jpg" alt="Snap 1"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-02.jpg" alt="Snap 2"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-03.jpg" alt="Snap 3"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-04.jpg" alt="Snap 4"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-05.jpg" alt="Snap 5"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-06.jpg" alt="Snap 6"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-07.jpg" alt="Snap 7"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-08.jpg" alt="Snap 8"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-09.jpg" alt="Snap 9"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-10.jpg" alt="Snap 10"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-11.jpg" alt="Snap 11"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-12.jpg" alt="Snap 12"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-13.jpg" alt="Snap 13"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-14.jpg" alt="Snap 14"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-15.jpg" alt="Snap 15"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-16.jpg" alt="Snap 16"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-17.jpg" alt="Snap 17"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-18.jpg" alt="Snap 18"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-19.jpg" alt="Snap 19"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-20.jpg" alt="Snap 20"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-21.jpg" alt="Snap 21"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-22.jpg" alt="Snap 22"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-23.jpg" alt="Snap 23"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-24.jpg" alt="Snap 24"></div>
+      <div class="item"><img src="../assets/images/snaps/snap-25.jpg" alt="Snap 25"></div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <span class="prev" id="prevBtn"></span>
+    <span class="next" id="nextBtn"></span>
+  </div>
+</div>
+
+<script>
+  const prev = document.getElementById('prevBtn');
+  const next = document.getElementById('nextBtn');
+  const box = document.getElementById('snapBox');
+  let isAnimating = false;
+
+  function refreshVisibility() {
+    const items = document.querySelectorAll('#snapBox .item');
+    items.forEach((item, index) => {
+      if (index < 7) {
+        item.style.visibility = 'visible';
+        item.style.opacity = '1';
+      } else {
+        item.style.visibility = 'hidden';
+        item.style.opacity = '0';
+      }
+    });
+  }
+
+  function moveNext() {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const items = document.querySelectorAll('#snapBox .item');
+    const firstItem = items[0];
+    firstItem.style.opacity = '0';
+    box.appendChild(firstItem);
+    void firstItem.offsetWidth;
+
+    requestAnimationFrame(() => {
+      firstItem.style.opacity = '1';
+      refreshVisibility();
+    });
+
+    setTimeout(() => { isAnimating = false; }, 500);
+  }
+
+  function movePrev() {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const items = document.querySelectorAll('#snapBox .item');
+    const lastItem = items[items.length - 1];
+    lastItem.style.opacity = '0';
+    box.prepend(lastItem);
+    void lastItem.offsetWidth;
+
+    requestAnimationFrame(() => {
+      lastItem.style.opacity = '1';
+      refreshVisibility();
+    });
+
+    setTimeout(() => { isAnimating = false; }, 500);
+  }
+
+  next.addEventListener('click', moveNext);
+  prev.addEventListener('click', movePrev);
+
+  refreshVisibility();
+</script>
+
+</body>
+</html>

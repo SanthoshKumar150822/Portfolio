@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificates | Santhosh Kumar</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="../assets/images/icons/favicon.png" type="image/png">
+<style>
+  .cert-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+    padding-top: 10px;
+  }
+
+  .box {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    transition: 0.5s;
+    overflow: hidden;
+  }
+
+  .box:hover {
+    height: 185px;
+    border-color: var(--accent-soft);
+    box-shadow: 0 12px 40px var(--accent-soft);
+  }
+
+  .box .imgBx {
+    position: absolute;
+    inset: 0;
+    padding: 6px;
+  }
+
+  .box .imgBx img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: calc(var(--radius) - 6px);
+    opacity: 0.15;
+    transition: 0.5s;
+  }
+
+  .box:hover .imgBx img { opacity: 1; }
+
+  .zoom-icon-wrapper {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+  }
+
+  .box:hover .zoom-icon-wrapper { opacity: 1; }
+
+  .zoom-icon-wrapper:hover {
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+  }
+
+  .zoom-icon { color: #fff; font-size: 12px; }
+
+  .box .content {
+    position: absolute;
+    left: 6px; right: 6px; bottom: 6px;
+    padding: 8px;
+    border-radius: calc(var(--radius) - 10px);
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    text-align: center;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  .box:hover .content { opacity: 1; }
+
+  .box .content h3 {
+    font-size: 0.78em;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .box .content span {
+    font-size: 0.7em;
+    color: #fff;
+    display: block;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .box { width: 42vw; height: 42vw; }
+    .box:hover { height: 46vw; }
+  }
+</style>
+</head>
+<body>
+
+<a href="../index.html#achievements" class="glass btn btn-ghost back-btn">&#128123; Boo</a>
+
+<div class="page-shell">
+  <div class="cert-wrap">
+    <div class="box" data-img="../assets/images/certificates/best-paper-award.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/best-paper-award.jpg" alt="Best Paper Award">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Best Paper Award</h3><span>@ NIT Trichy</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/degree-in-a-day.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/degree-in-a-day.jpg" alt="Degree in a Day">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Degree in a Day</h3><span>@ NIT Pondicherry</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/clueminati.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/clueminati.jpg" alt="Clueminati">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Clueminati</h3><span>@ Jamal Mohamed College, Trichy</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/hackathon-srm.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/hackathon-srm.jpg" alt="Hackathon SRM">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Hackathon</h3><span>@ SRM University, Chennai</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/game-dev-yadava.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/game-dev-yadava.jpg" alt="Game Development">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Game Development</h3><span>@ Yadava College, Madurai</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/debugging-gandhigram.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/debugging-gandhigram.jpg" alt="Debugging">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Debugging</h3><span>@ Gandhigram University, Dindugul</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/debugging-saraswathi.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/debugging-saraswathi.jpg" alt="Debugging">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Debugging</h3><span>@ Saraswathi Narayanan College, Madurai</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/best-salesman.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/best-salesman.jpg" alt="Best Salesman">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Best Salesman</h3><span>@ National Engineering College, Kovilpatti</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/web-designing.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/web-designing.jpg" alt="Web Designing">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Web Designing</h3><span>@ Saraswathi Narayanan College, Madurai</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/best-poster.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/best-poster.jpg" alt="Best Poster">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Best Poster</h3><span>@ CAPS, CHRIST University Bangalore</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/best-poster-presentation.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/best-poster-presentation.jpg" alt="Best Poster Presentation">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Best Poster Presentation</h3><span>@ CAPS, CHRIST University Bangalore</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/poster-overall.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/poster-overall.jpg" alt="Overall Poster Presentation">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Overall Poster Presentation</h3><span>@ CAPS, CHRIST University Bangalore</span></div>
+    </div>
+
+    <div class="box" data-img="../assets/images/certificates/hackathon-nitpy.jpg">
+      <div class="imgBx">
+        <img src="../assets/images/certificates/hackathon-nitpy.jpg" alt="Hackathon NIT Pondicherry">
+        <div class="zoom-icon-wrapper"><i class="fas fa-search-plus zoom-icon"></i></div>
+      </div>
+      <div class="content"><h3>Hackathon</h3><span>@ NIT Pondicherry</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="imgModal">
+  <div class="modal-content">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img id="modalImg" src="" alt="Certificate zoom">
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('imgModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalClose = document.getElementById('modalClose');
+
+  document.querySelectorAll('.box').forEach(box => {
+    box.querySelector('.zoom-icon-wrapper').addEventListener('click', (e) => {
+      e.stopPropagation();
+      modalImg.src = box.getAttribute('data-img');
+      modal.classList.add('active');
+    });
+  });
+
+  function closeModal() { modal.classList.remove('active'); }
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+</body>
+</html>
